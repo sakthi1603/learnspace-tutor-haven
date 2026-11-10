@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Lesson, tutor and smart-note content is static demo data in `src/lib/tutor-data.ts` and `src/lib/smart-notes.ts`; swap these for Lovable Cloud queries when a backend is added, keeping the same shapes so components don't change.
+- All animations are CSS keyframes + `@utility` classes in `src/styles.css`; scroll reveals use the `<Reveal>` component (IntersectionObserver adds `.is-visible`) — no animation libraries.
