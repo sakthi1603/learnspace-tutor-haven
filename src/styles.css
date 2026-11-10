@@ -105,10 +105,10 @@
   --gradient-lamp: linear-gradient(120deg, var(--primary) 0%, var(--primary-glow) 50%, var(--accent) 100%);
   --gradient-hero-veil: linear-gradient(
     90deg,
-    oklch(0.13 0.035 262 / 0.96) 0%,
-    oklch(0.13 0.035 262 / 0.82) 40%,
-    oklch(0.13 0.035 262 / 0.25) 75%,
-    oklch(0.13 0.035 262 / 0.5) 100%
+    oklch(0.13 0.035 262 / 0.92) 0%,
+    oklch(0.13 0.035 262 / 0.7) 38%,
+    oklch(0.13 0.035 262 / 0.1) 70%,
+    oklch(0.13 0.035 262 / 0.3) 100%
   );
   --gradient-fade-bottom: linear-gradient(180deg, transparent 0%, var(--background) 100%);
   --gradient-card: linear-gradient(160deg, oklch(0.25 0.04 262 / 0.9), oklch(0.19 0.035 262 / 0.9));

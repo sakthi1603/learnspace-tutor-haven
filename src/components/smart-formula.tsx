@@ -14,6 +14,7 @@ interface TermProps {
 /** An interactive piece of a formula: hover for a quick hint, click/tap for full explanation. */
 export function FormulaTerm({ refId, active, onSelect, children }: TermProps) {
   const ref = references[refId];
+  if (!ref) return <>{children}</>;
   return (
     <span className="group relative inline-block">
       <button
@@ -21,8 +22,10 @@ export function FormulaTerm({ refId, active, onSelect, children }: TermProps) {
         onClick={() => onSelect(refId)}
         className={cn(
           "font-math rounded-lg px-1.5 transition-all duration-300",
-          "border-b-2 border-dashed border-accent/70 text-accent hover:bg-accent/15",
-          active ? "bg-accent text-accent-foreground shadow-chalk" : "animate-glow-pulse",
+          "border-b-2 border-dashed border-accent/70",
+          active
+            ? "bg-accent text-accent-foreground shadow-chalk"
+            : "text-accent animate-glow-pulse hover:bg-accent/15",
         )}
         aria-label={`Explain ${ref.term}`}
       >
@@ -92,7 +95,8 @@ export function ExplanationPanel({ refId, onSelect, onClose }: PanelProps) {
       </div>
     );
   }
-  const ref: FormulaReference = references[refId];
+  const ref: FormulaReference | undefined = references[refId];
+  if (!ref) return null;
 
   return (
     <div key={ref.id} className="animate-rise relative rounded-3xl glass-card p-6 md:p-8">
@@ -167,7 +171,7 @@ export function ExplanationPanel({ refId, onSelect, onClose }: PanelProps) {
           <div className="mt-2 flex flex-wrap gap-2">
             {ref.related.map((r) => (
               <Button key={r} variant="chalk" size="sm" onClick={() => onSelect(r)}>
-                <span className="font-math">{references[r].term}</span>
+                <span className="font-math">{references[r]?.term ?? r}</span>
                 <ArrowRight />
               </Button>
             ))}
