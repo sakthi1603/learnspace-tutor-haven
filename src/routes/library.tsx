@@ -37,7 +37,7 @@ function LibraryPage() {
   const [draft, setDraft] = useState(q);
   const results = searchLessons(q, subject);
 
-  const update = (next: { q?: string; subject?: "All" | Subject }) =>
+  const update = (next: { q?: string | undefined; subject?: "All" | Subject | undefined }) =>
     navigate({ search: (prev) => ({ ...prev, ...next }), replace: true });
 
   return (
